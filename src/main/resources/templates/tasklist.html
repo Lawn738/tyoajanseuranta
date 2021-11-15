@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<meta charset="UTF-8">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>tehtava listaus</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h3 th:inline="text">Tervetuloa [[${#httpServletRequest.remoteUser}]]</h3>
+	<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out"/>
+		</form>
+	<h1>tasks</h1>
+	<table>
+		<tr>
+			<th>tehtävä:</th>
+		</tr>
+		<tr th:each="task : ${tasks}">
+			<td th:text="${task.name}"></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${task.id})}">Poista</a></td>
+		</tr>
+	</table>
+	<a href="/addtask">Lisää uusi tehtävä</a>
+	<a href="/workdaylist">Palaa työmääräyksiin</a>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<meta charset="UTF-8">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>käyttäjän luonti</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Käyttäjän luonti</h1>
+     <div>
+		<form th:object="${signupform}" th:action="@{/saveuser}" action="#" method="post">
+			<div>
+				<label> Käyttäjänimi :<input type="text" th:field="*{username}"/></label>
+				<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</p>	
+			</div>
+			
+			<div>
+				<label> S-posti :<input type="text" th:field="*{email}"/></label>
+				<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</p>	
+			</div>
+			
+			<div>
+				<label> Salasana :<input type="password" th:field="*{password}"/></label>
+				<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>	
+			</div>
+			
+			<div>
+				<label> toista salasana: <input type="password" th:field="*{passwordCheck}"/></label>
+				<p th:if="${#fields.hasErrors('passwordCheck')}" th:errors="*{passwordCheck}">Salasanat eivät täsmää</p>	
+			</div>
+			
+			<input type="submit" value="Luo käyttäjä"></input>		
+		</form>
+	</div>
+</body>
+</html>

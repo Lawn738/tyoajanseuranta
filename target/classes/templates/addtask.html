@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<meta charset="UTF-8">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Luo uusi Tehtävä</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Luo uusi tehtävä</h1>
+	<div>
+		<form th:object="${task}" th:action="@{savetask}" action="#" method="post">
+			<label for="name">tehtävä</label> <input type="text" id="fname"
+				th:field="*{name}" />
+			<input type="submit" value="Lisää tehtävä"></input>
+		</form>
+	</div>
+</body>
+</html>
